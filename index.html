@@ -1,426 +1,549 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>연하정 펜션 - 울릉도 천부 오션뷰 숙소</title>
-    <style>
-        /* 기본 스타일 초기화 */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연하정 펜션 - 울릉도 천부 오션뷰 숙소</title>
 
-        /* 공통 레이아웃 및 컴포넌트 */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            color: #111;
-        }
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #0056b3;
-            color: #fff;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            transition: background-color 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .btn:hover {
-            background-color: #004085;
-        }
-        .btn-outline {
-            background-color: #fff;
-            color: #0056b3;
-            border: 2px solid #0056b3;
-        }
-        .btn-outline:hover {
-            background-color: #f0f4f8;
-        }
-        .image-placeholder {
-            background-color: #dee2e6;
-            color: #495057;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            padding: 20px;
-        }
+<style>
 
-        /* 1. 첫 화면 (Hero) */
-        .hero {
-            background-color: #e3f2fd;
-            text-align: center;
-            padding: 80px 0;
-        }
-        .hero-brand {
-            font-size: 1.2rem;
-            color: #0056b3;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .hero-title {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: #111;
-            word-break: keep-all;
-        }
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 30px;
-            word-break: keep-all;
-        }
-        .hero-image {
-            width: 100%;
-            height: 350px;
-            margin-bottom: 30px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        /* 2. 소개 카드 */
-        .intro-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-        }
-        .card-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #0056b3;
-        }
-        .card ul {
-            list-style: none;
-        }
-        .card li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 15px;
-        }
-        .card li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #0056b3;
-        }
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+line-height:1.6;
+background:#f8f9fa;
+color:#333;
+}
 
-        /* 3. 방문 안내 */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .info-table th, .info-table td {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-        }
-        .info-table th {
-            background-color: #f1f3f5;
-            width: 25%;
-            font-weight: bold;
-        }
+a{
+text-decoration:none;
+color:inherit;
+}
 
-        /* 4. 외국어 안내 */
-        .lang-section {
-            background-color: #f1f3f5;
-            text-align: center;
-        }
-        .lang-box {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-            border-left: 4px solid #0056b3;
-        }
-        .lang-box p {
-            margin-bottom: 10px;
-        }
-        .lang-box p:last-child {
-            margin-bottom: 0;
-        }
+.container{
+width:100%;
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
 
-        /* 5. FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            background: #fff;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #eee;
-            overflow: hidden;
-        }
-        .faq-question {
-            padding: 15px 20px;
-            background: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-question::after {
-            content: "▼";
-            font-size: 0.8rem;
-            color: #888;
-        }
-        .faq-item.active .faq-question::after {
-            content: "▲";
-        }
-        .faq-answer {
-            padding: 15px 20px;
-            background: #fafafa;
-            border-top: 1px solid #eee;
-            display: none;
-        }
-        .faq-item.active .faq-answer {
-            display: block;
-        }
+section{
+padding:70px 0;
+}
 
-        /* 6. 마지막 문의 섹션 */
-        .contact-section {
-            text-align: center;
-            background-color: #e3f2fd;
-        }
-        .contact-info {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
+.section-title{
+text-align:center;
+font-size:2rem;
+margin-bottom:40px;
+color:#0056b3;
+}
 
-        /* 반응형 모바일 스타일 변경 */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            .info-table th, .info-table td {
-                display: block;
-                width: 100%;
-            }
-            .info-table th {
-                background-color: #f8f9fa;
-                border-bottom: none;
-                padding-bottom: 5px;
-            }
-            .info-table td {
-                padding-top: 5px;
-            }
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
+.btn-group{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.btn{
+background:#0056b3;
+color:white;
+padding:12px 24px;
+border-radius:8px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#003d82;
+}
+
+.btn-outline{
+background:white;
+color:#0056b3;
+border:2px solid #0056b3;
+}
+
+/* Hero */
+
+.hero{
+background:#e3f2fd;
+padding:80px 0;
+text-align:center;
+}
+
+.hero-brand{
+font-size:1.2rem;
+font-weight:bold;
+color:#0056b3;
+display:block;
+margin-bottom:10px;
+}
+
+.hero-title{
+font-size:2.5rem;
+margin-bottom:15px;
+}
+
+.hero-subtitle{
+font-size:1.1rem;
+margin-bottom:30px;
+color:#555;
+}
+
+.hero-image{
+width:100%;
+height:450px;
+overflow:hidden;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.hero-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* 카드 */
+
+.intro-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.card-title{
+margin-bottom:15px;
+color:#0056b3;
+font-size:1.3rem;
+}
+
+.card ul{
+list-style:none;
+}
+
+.card li{
+margin-bottom:10px;
+padding-left:15px;
+position:relative;
+}
+
+.card li:before{
+content:"•";
+position:absolute;
+left:0;
+color:#0056b3;
+}
+
+/* 객실 갤러리 */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.gallery-item{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.gallery-item img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.gallery-text{
+padding:15px;
+text-align:center;
+font-weight:bold;
+}
+
+/* 테이블 */
+
+.info-table{
+width:100%;
+background:white;
+border-collapse:collapse;
+overflow:hidden;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.info-table th,
+.info-table td{
+padding:15px;
+border-bottom:1px solid #eee;
+text-align:left;
+}
+
+.info-table th{
+width:25%;
+background:#f1f3f5;
+}
+
+/* FAQ */
+
+.faq-item{
+margin-bottom:10px;
+background:white;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+
+.faq-question{
+padding:18px;
+font-weight:bold;
+cursor:pointer;
+background:white;
+}
+
+.faq-answer{
+display:none;
+padding:18px;
+background:#fafafa;
+}
+
+.faq-item.active .faq-answer{
+display:block;
+}
+
+/* 지도 */
+
+.location-image{
+width:100%;
+max-width:800px;
+height:350px;
+margin:auto;
+overflow:hidden;
+border-radius:15px;
+}
+
+.location-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.contact-section{
+background:#e3f2fd;
+text-align:center;
+}
+
+.contact-info{
+font-size:1.3rem;
+font-weight:bold;
+margin:20px 0;
+}
+
+/* 모바일 */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:1.8rem;
+}
+
+.hero-image{
+height:280px;
+}
+
+.info-table th,
+.info-table td{
+display:block;
+width:100%;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- 1. 첫 화면 -->
-    <header class="hero">
-        <div class="container">
-            <span class="hero-brand">연하정 펜션</span>
-            <h1 class="hero-title">천부 바다를 가장 가까이서 만나는 곳</h1>
-            <p class="hero-subtitle">통창 너머로 천부의 푸른 바다와 환상적인 노을이 그림처럼 펼쳐집니다.</p>
-            
-            <div class="image-placeholder hero-image">
-                [대표 사진 자리 - 내 사진으로 교체]<br>
-                (통창으로 보이는 천부 바다와 노을 전경 사진을 넣어주세요)
-            </div>
 
-            <p style="margin-bottom: 15px; color: #555; word-break: keep-all;">
-                문을 열자마자 통창 가득 펼쳐지는 파란 천부 바다 뷰에 한 번 반하고, 저녁이면 붉게 물드는 노을에 두 번 반하는 곳이에요 🌅
-            </p>
+<header class="hero">
 
-            <div class="btn-group">
-                <a href="tel:[전화번호 또는 문의 방법]" class="btn">전화 문의하기</a>
-                <a href="#contact" class="btn btn-outline">위치 지도보기</a>
-            </div>
-        </div>
-    </header>
+<div class="container">
 
-    <!-- 2. 소개 카드 -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">연하정 둘러보기</h2>
-            <div class="intro-cards">
-                <!-- 위치 카드 -->
-                <div class="card">
-                    <h3 class="card-title">교통 및 위치</h3>
-                    <ul>
-                        <li>천부 버스정류장에서 걸어서 1분 거리 (뚜벅이 여행 강력 추천)</li>
-                        <li>자가용 운전자를 위한 주차장 완비</li>
-                    </ul>
-                </div>
-                <!-- 대표 메뉴/체험 카드 -->
-                <div class="card">
-                    <h3 class="card-title">객실 및 서비스</h3>
-                    <ul>
-                        <li>커플룸, 패밀리룸, 프렌즈룸 완비</li>
-                        <li>객실 내 오션뷰 통창 (노을 맛집)</li>
-                        <li>물놀이용품 무료 대여 서비스</li>
-                        <li>시원한 옥상 바베큐장 무료 사용</li>
-                    </ul>
-                </div>
-                <!-- 추천 대상 카드 -->
-                <div class="card">
-                    <h3 class="card-title">이런 분께 추천해요</h3>
-                    <ul>
-                        <li>울릉도의 아름다운 노을을 방에서 보고 싶은 분</li>
-                        <li>대중교통으로 편리하게 이동하고 싶은 여행객</li>
-                        <li>바다 물놀이와 옥상 바베큐를 함께 즐기고 싶은 분</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<span class="hero-brand">
+연하정 펜션
+</span>
 
-    <!-- 3. 방문 안내 -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">이용 및 방문 안내</h2>
-            <table class="info-table">
-                <tr>
-                    <th>이용 시간</th>
-                    <td>입실(체크인) 17:00 / 퇴실(체크아웃) 11:00</td>
-                </tr>
-                <tr>
-                    <th>예약 방법</th>
-                    <td>[전화번호 또는 문의 방법]을 통한 사전 확인 및 예약</td>
-                </tr>
-                <tr>
-                    <th>결제 안내</th>
-                    <td>사전 예약 시 상세 결제 방식 확인 필요</td>
-                </tr>
-                <tr>
-                    <th>주차 정보</th>
-                    <td>펜션 내 주차장 완비 (무료 이용 가능)</td>
-                </tr>
-                <tr>
-                    <th>확인 필요 항목</th>
-                    <td>객실 가격 및 울릉도행 배편 정보는 계절과 날씨에 따라 변동되므로 방문 전 확인 필요</td>
-                </tr>
-            </table>
-        </div>
-    </section>
+<h1 class="hero-title">
+천부 바다를 가장 가까이서 만나는 곳
+</h1>
 
-    <!-- 4. 외국어 안내 -->
-    <section class="lang-section">
-        <div class="container">
-            <h2 class="section-title">English Information</h2>
-            <div class="lang-box">
-                <p>• Welcome to Yeonhajeong Pension, a cozy ocean-view stay located just a 1-minute walk from Cheonbu Bus Stop with free parking available.</p>
-                <p>• We offer three types of comfortable rooms—Couple, Family, and Friends—perfect for watching Ulleungdo's beautiful sunsets.</p>
-                <p>• For room availability, booking details, payment methods, or allergy concerns, please contact us in advance (Further verification required for pricing and schedules).</p>
-            </div>
-        </div>
-    </section>
+<p class="hero-subtitle">
+통창 너머 펼쳐지는 푸른 바다와 아름다운 노을
+</p>
 
-    <!-- 5. FAQ -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">자주 묻는 질문 (FAQ)</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">천부 버스정류장에서 얼마나 가까운가요?</div>
-                    <div class="faq-answer">걸어서 1분 거리에 있습니다. 대중교통을 이용하시는 분들도 무거운 짐을 들고 오래 걷지 않아 매우 편리합니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">주차가 가능한가요?</div>
-                    <div class="faq-answer">네, 숙소 내에 주차장이 완비되어 있어 차량을 가지고 오셔도 편하게 주차하실 수 있습니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">물놀이용품과 바베큐장 이용 요금은 얼마인가요?</div>
-                    <div class="faq-answer">연하정 펜션 투숙객분들에게는 물놀이용품 대여와 옥상 바베큐장 사용을 모두 무료로 제공해 드리고 있습니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">객실 안에서 바다가 보이나요?</div>
-                    <div class="faq-answer">네, 객실마다 마련된 커다란 통창을 통해 천부의 푸른 바다와 붉은 노을을 눈앞에서 감상하실 수 있습니다.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">숙박 요금이나 정확한 예약 가능 여부는 어떻게 확인하나요?</div>
-                    <div class="faq-answer">이용 시기(시즌)에 따라 요금이 다를 수 있으므로 [전화번호 또는 문의 방법]으로 연락해 주시면 정확하게 안내해 드립니다. (배편 운영시간 등 사전 확인 필요)</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="hero-image">
 
-    <!-- 6. 마지막 문의 섹션 -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">연하정 펜션 오시는 길 & 문의</h2>
-            <p class="contact-info">문의처: [전화번호 또는 문의 방법]</p>
-            <p style="margin-bottom: 20px; color: #555;">위치: 울릉도 천부 버스정류장 도보 1분 거리</p>
-            
-            <div class="image-placeholder" style="width: 100%; height: 300px; max-width: 700px; margin: 0 auto 30px auto;">
-                [지도 사진 자리 - 내 사진으로 교체]<br>
-                (천부 정류장과 숙소 위치가 표시된 지도 캡처 이미지를 넣어주세요)
-            </div>
+<img src="images/main-ocean.jpg"
+alt="연하정 펜션 오션뷰">
 
-            <div class="btn-group">
-                <a href="tel:[전화번호 또는 문의 방법]" class="btn">지금 바로 문의하기</a>
-                <a href="javascript:alert('전화 또는 안내된 방법으로 문의 확인이 필요합니다.');" class="btn btn-outline">실시간 예약 확인</a>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <script>
-        // FAQ 아코디언 기능 구현
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-            });
-        });
-    </script>
+<p>
+문을 열자마자 통창 가득 펼쳐지는 천부 바다의 풍경 🌅
+</p>
+
+<div class="btn-group">
+
+<a href="tel:01012345678" class="btn">
+전화 문의하기
+</a>
+
+<a href="#contact" class="btn btn-outline">
+위치 보기
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+연하정 둘러보기
+</h2>
+
+<div class="intro-cards">
+
+<div class="card">
+
+<h3 class="card-title">
+교통 및 위치
+</h3>
+
+<ul>
+<li>천부 버스정류장 도보 1분</li>
+<li>주차 가능</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h3 class="card-title">
+객실 및 서비스
+</h3>
+
+<ul>
+<li>커플룸</li>
+<li>패밀리룸</li>
+<li>프렌즈룸</li>
+<li>물놀이용품 무료대여</li>
+<li>옥상 바베큐 무료사용</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h3 class="card-title">
+추천 여행객
+</h3>
+
+<ul>
+<li>노을을 좋아하는 여행객</li>
+<li>가족 여행</li>
+<li>친구 여행</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+객실 사진
+</h2>
+
+<div class="gallery">
+
+<div class="gallery-item">
+<img src="images/couple-room.jpg">
+<div class="gallery-text">
+커플룸
+</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/family-room.jpg">
+<div class="gallery-text">
+패밀리룸
+</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/friends-room.jpg">
+<div class="gallery-text">
+프렌즈룸
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+이용 안내
+</h2>
+
+<table class="info-table">
+
+<tr>
+<th>예약</th>
+<td>전화 문의 후 확인 필요</td>
+</tr>
+
+<tr>
+<th>가격</th>
+<td>시즌별 변동 (확인 필요)</td>
+</tr>
+
+<tr>
+<th>배편</th>
+<td>날씨 및 계절에 따라 변동 (확인 필요)</td>
+</tr>
+
+<tr>
+<th>주차</th>
+<td>무료 이용 가능</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+자주 묻는 질문
+</h2>
+
+<div class="faq-item">
+
+<div class="faq-question">
+객실 안에서 바다가 보이나요?
+</div>
+
+<div class="faq-answer">
+네, 통창을 통해 바다와 노을을 감상할 수 있습니다.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<div class="faq-question">
+바베큐 이용 가능한가요?
+</div>
+
+<div class="faq-answer">
+네, 옥상 바베큐장을 무료로 사용할 수 있습니다.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="contact" class="contact-section">
+
+<div class="container">
+
+<h2 class="section-title">
+오시는 길 & 문의
+</h2>
+
+<p class="contact-info">
+문의 : 010-1234-5678
+</p>
+
+<p>
+천부 버스정류장 도보 1분
+</p>
+
+<br>
+
+<div class="location-image">
+
+<img src="images/map.jpg"
+alt="연하정 위치">
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+const faq=document.querySelectorAll(".faq-question");
+
+faq.forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+item.parentElement.classList.toggle("active");
+
+});
+
+});
+
+</script>
+
 </body>
 </html>
